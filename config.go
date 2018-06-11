@@ -82,13 +82,15 @@ func configureApp(configName *string) *appConfiguration {
 	// read config file
 	err := viper.ReadInConfig()
 	if err != nil {
+		glog.Errorf("error config file: %s \nTrying alternative file locations and name.\n", err)
+
 		viper.SetConfigName(app)
 		viper.AddConfigPath("/usr/local/etc/")
 		viper.AddConfigPath("/etc/")
 		err = viper.ReadInConfig()
 		if err != nil {
 			flag.Set("alsologtostderr", "true")
-			glog.Errorf("error config file: %s \nUsing Default Config\n", err)
+			glog.Fatalf("error config file: %s \n", err)
 		}
 	}
 
