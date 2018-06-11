@@ -76,6 +76,9 @@ func main() {
 			}
 		}
 	}
+
+	// flush the logs
+	glog.Flush()
 }
 
 func getIP() (string, error) {
