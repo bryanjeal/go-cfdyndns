@@ -75,6 +75,9 @@ func configureApp(configName *string) *appConfiguration {
 	viper.AddConfigPath("/usr/local/etc/" + app + "/")
 	viper.AddConfigPath("/etc/" + app + "/")
 	viper.AddConfigPath("$HOME/." + app)
+	viper.AddConfigPath("/Applications/" + app + "/")
+	viper.AddConfigPath("C:\\Applications\\" + app + "\\")
+	viper.AddConfigPath("C:\\Program Files\\" + app + "\\")
 
 	// read config file
 	err := viper.ReadInConfig()
